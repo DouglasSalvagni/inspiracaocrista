@@ -2,7 +2,7 @@
     <div class=" p-4">
         <h2 class="text-success">Olá, <?= $assinante_name ?>!</h2>
         <p class="mt-3">Parabéns pela sua assinatura! Você já pode usar os benefícios do <strong>DNA Care</strong>, mesmo sem o Cartão. Apresente seu CPF na nossa rede credenciada para comprovação. Conheça a rede credenciada em
-            <a href="https://dnacarebrasil.com.br/rede-credenciada/" target="_blank" class="text-primary">https://dnacarebrasil.com.br/rede-credenciada/</a>.
+            <a href="<?= home_url() ?>rede-credenciada/" target="_blank" class="text-primary"><?= home_url() ?>rede-credenciada/</a>.
         </p>
 
         <p>Para retirar seu Cartão, visite a <strong>DNA Medicina Diagnóstica</strong> na Rua Bolívia, 326.</p>

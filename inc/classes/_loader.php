@@ -16,6 +16,7 @@ require get_template_directory() . '/inc/classes/services/Sales_Service.php';
 require get_template_directory() . '/inc/classes/services/DNA_Assinatura_Service.php';
 
 // PAGES
+require get_template_directory() . '/inc/classes/pages/Free_text.php';
 require get_template_directory() . '/inc/classes/pages/Landing_page.php';
 require get_template_directory() . '/inc/classes/pages/Index.php';
 require get_template_directory() . '/inc/classes/pages/User_Leads.php';

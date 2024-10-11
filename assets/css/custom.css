@@ -18,3 +18,38 @@ File: Custom Css File
 .col-leads .collapse {
     height: 100%;
 }
+
+.btn--shake {
+    animation: shake 1s infinite;
+}
+
+.btn--shake:hover {
+    animation-play-state: paused;
+    /* Pausa a animação ao passar o mouse */
+}
+
+@keyframes shake {
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(0);
+    }
+
+    50% {
+        transform: translateX(5px);
+    }
+
+    75% {
+        transform: translateX(-5px);
+    }
+}
+
+@media (min-width: 768px) {
+    .w-md-50 {
+        width: 50% !important;
+    }
+}

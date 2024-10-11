@@ -43,8 +43,8 @@ function handle_leadstaker_webhook(WP_REST_Request $request)
 
         $representante_nome = 'N/A';
 
-        // Verificar se a URL de origem contém 'dnacarebrasil.com.br'
-        if (strpos($originURL, 'dnacarebrasil.com.br') !== false) {
+        // Verificar se a URL de origem contém 'inspiracaocrista.com.br'
+        if (strpos($originURL, 'inspiracaocrista.com.br') !== false) {
             // Distribuir o lead para a equipe comercial e obter o objeto do representante
             $representante = distribute_lead($post_id);
 

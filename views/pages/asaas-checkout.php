@@ -1,5 +1,5 @@
 <?php
-$add_dependent_class = '';
+$add_dependent_class = 'd-none';
 if ($entity == 'PJ') {
     $name_label = 'Nome da empresa';
     $entity_type = 'CNPJ';
@@ -164,10 +164,11 @@ Template_Helper::render_view('parts/checkout-header');
                                     </div>
 
                                     <!-- PAGAMENTO BOLETO -->
-                                    <?php if ($entity == 'PJ' 
-                                                || (isset($lead_data) && $lead_data->get_recurrence() == 'monthly' 
-                                                && $lead_data->is_boleto_authorized())
-                                     ) : ?>
+                                    <?php if (
+                                        $entity == 'PJ'
+                                        || (isset($lead_data) && $lead_data->get_recurrence() == 'monthly'
+                                            && $lead_data->is_boleto_authorized())
+                                    ) : ?>
                                         <div class="accordion-item shadow">
                                             <h2 class="accordion-header" id="accordionwithiconExample3">
                                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#accor_boleto" aria-expanded="false" aria-controls="accor_boleto">
@@ -251,7 +252,7 @@ Template_Helper::render_view('parts/checkout-header');
                                 <div class="modal-dialog modal-dialog-scrollable">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <h5 class="modal-title" id="modalAceitaTermosTitle">Contrato de assinatura</h5>
+                                            <h5 class="modal-title" id="modalAceitaTermosTitle">Termos de aceite</h5>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
                                             </button>
                                         </div>
@@ -260,7 +261,7 @@ Template_Helper::render_view('parts/checkout-header');
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-light" data-bs-dismiss="modal">Fechar</button>
-                                            <button type="submit" class="btn btn-success" disabled><i class="bx bx-credit-card align-center fs-17 me-1"></i> Aceitar e criar assinatura</button>
+                                            <button type="submit" class="btn btn-success"><i class="bx bx-credit-card align-center fs-17 me-1"></i> Aceitar e criar assinatura</button>
                                         </div>
                                     </div><!-- /.modal-content -->
                                 </div><!-- /.modal-dialog -->

@@ -16,10 +16,10 @@
         
         <p>Caso tenham dúvidas ou precisem de suporte, estamos à disposição pelo telefone 
         <a href="tel:1155000515" class="text-primary">(11) 5500 0515</a> ou no nosso site 
-        <a href="https://dnacarebrasil.com.br/" target="_blank" class="text-primary">dnacarebrasil.com.br</a>, onde vocês também podem consultar a rede credenciada.</p>
+        <a href="<?= home_url() ?>" target="_blank" class="text-primary">inspiracaocrista.com.br</a>, onde vocês também podem consultar a rede credenciada.</p>
         
         <p>Aproveite para nos acompanhar nas redes sociais em 
-        <a href="https://instagram.com/dnacarebrasil" target="_blank" class="text-primary">@dnacarebrasil</a>.</p>
+        <a href="https://instagram.com/inspiracaocrista" target="_blank" class="text-primary">@inspiracaocrista</a>.</p>
         
         <p>Sejam muito bem-vindos à nossa família!</p>
         

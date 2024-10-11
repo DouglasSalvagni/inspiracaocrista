@@ -20,7 +20,7 @@ class Base_Page
         $this->add_style('bootstrap', get_template_directory_uri() . '/assets/css/bootstrap.min.css', [], false, 'all', 10);
         $this->add_style('icons', get_template_directory_uri() . '/assets/css/icons.min.css', [], false, 'all', 20);
         $this->add_style('app', get_template_directory_uri() . '/assets/css/app.min.css', [], false, 'all', 30);
-        $this->add_style('custom', get_template_directory_uri() . '/assets/css/custom.min.css', [], false, 'all', 40);
+        $this->add_style('custom', get_template_directory_uri() . '/assets/css/custom.css', [], false, 'all', 40);
     }
 
     // Método para carregar base scripts

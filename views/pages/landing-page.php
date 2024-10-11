@@ -6,7 +6,7 @@
                 <?php
 
                 $logo_height = 100;
-                if(wp_is_mobile()) $logo_height = 60;
+                if (wp_is_mobile()) $logo_height = 60;
 
                 ?>
                 <img src="<?= Media_Helper::get_asset_url('images/logo.png') ?>" class="card-logo card-logo-dark" alt="logo dark" height="<?= $logo_height ?>">
@@ -19,22 +19,22 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ms-auto mt-2 mt-lg-0" id="navbar-example">
                     <li class="nav-item">
-                        <a class="nav-link fs-14 active" href="#hero">Início</a>
+                        <a class="nav-link fs-14 active" href="<?= home_url('/#hero') ?>">Início</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link fs-14" href="#benefits">Benefícios</a>
+                        <a class="nav-link fs-14" href="<?= home_url('/#benefits') ?>">Benefícios</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link fs-14" href="#citacoes">Citações</a>
+                        <a class="nav-link fs-14" href="<?= home_url('/#citacoes') ?>">Citações</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link fs-14" href="#como-funciona">Como funciona</a>
+                        <a class="nav-link fs-14" href="<?= home_url('/#como-funciona') ?>">Como funciona</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link fs-14" href="#gratis">Comece grátis</a>
+                        <a class="nav-link fs-14" href="<?= home_url('/#gratis') ?>">Comece grátis</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link fs-14" href="#faq">FAQ</a>
+                        <a class="nav-link fs-14" href="<?= home_url('/#faq') ?>">FAQ</a>
                     </li>
                 </ul>
             </div>
@@ -243,7 +243,7 @@
                                                 </div>
 
                                                 <div class="d-flex justify-content-center w-100">
-                                                    <img src="<?= Media_Helper::get_asset_url('images/lp/passagem1.webp') ?>" class="d-block img-fluid w-50" alt="...">
+                                                    <img src="<?= Media_Helper::get_asset_url('images/lp/passagem1.webp') ?>" class="d-block img-fluid w-md-50 w-75" alt="...">
                                                 </div>
 
                                             </div>
@@ -363,6 +363,11 @@
                 </div>
                 <!-- end col -->
             </div>
+
+
+            <div class="mt-4 row justify-content-center">
+                    <a href="#" class="btn btn-success flex-shrink-1 btn-lg btn--shake px-5 py-3 shadow-lg">Assinar Agora</a>
+            </div>
             <!-- end row -->
         </div>
         <!-- end container -->
@@ -390,8 +395,8 @@
                         <p class="mb-4 ff-secondary fs-16">Para experimentar gratuitamente nosso serviço, envie "teste" para o WhatsApp e descubra como podemos ajudar você.</p>
 
                         <div class="row pt-3">
-                            <div class="col-12 text-center">
-                                <a href="https://wa.me/SEU_NUMERO_DE_WHATSAPP" class="btn btn-primary">Quero uma Demonstração Gratuita</a>
+                            <div class="col-12">
+                                <a href="https://wa.me/SEU_NUMERO_DE_WHATSAPP" class="btn btn-success btn--shake">Quero uma Demonstração Gratuita <i class="ri-whatsapp-line align-middle ms-1"></i></a>
                             </div>
                         </div>
                     </div>
@@ -452,7 +457,7 @@
                             </h2>
                             <div id="faq-collapseTwo" class="accordion-collapse collapse" aria-labelledby="faq-headingTwo" data-bs-parent="#faq-accordion">
                                 <div class="accordion-body ff-secondary">
-                                    Via transferência bancária, cartão ou outros meios disponíveis no WhatsApp.
+                                    O pagamento pode ser feito com cartão de crédito de sua preferência.
                                 </div>
                             </div>
                         </div>
@@ -480,18 +485,6 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="faq-headingFive">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-collapseFive" aria-expanded="false" aria-controls="faq-collapseFive">
-                                    Posso mudar o horário de recebimento das mensagens?
-                                </button>
-                            </h2>
-                            <div id="faq-collapseFive" class="accordion-collapse collapse" aria-labelledby="faq-headingFive" data-bs-parent="#faq-accordion">
-                                <div class="accordion-body ff-secondary">
-                                    No momento, o horário de envio é fixo, mas estamos trabalhando para oferecer essa opção no futuro.
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
                 <div class="col-lg-6">
@@ -508,19 +501,6 @@
                                 </div>
                             </div>
                         </div>
-
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="faq-headingNine">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-collapseNine" aria-expanded="false" aria-controls="faq-collapseNine">
-                                    Como faço para atualizar meus dados de pagamento?
-                                </button>
-                            </h2>
-                            <div id="faq-collapseNine" class="accordion-collapse collapse" aria-labelledby="faq-headingNine" data-bs-parent="#faq-accordion">
-                                <div class="accordion-body ff-secondary">
-                                    Para atualizar os dados de pagamento, entre em contato conosco pelo WhatsApp e forneceremos as instruções necessárias.
-                                </div>
-                            </div>
-                        </div>
                         <div class="accordion-item">
                             <h2 class="accordion-header" id="faq-headingTen">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-collapseTen" aria-expanded="false" aria-controls="faq-collapseTen">
@@ -530,18 +510,6 @@
                             <div id="faq-collapseTen" class="accordion-collapse collapse" aria-labelledby="faq-headingTen" data-bs-parent="#faq-accordion">
                                 <div class="accordion-body ff-secondary">
                                     Atualmente, as mensagens são padrão para todos os assinantes, mas estamos considerando opções de personalização no futuro.
-                                </div>
-                            </div>
-                        </div>
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="faq-headingEleven">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-collapseEleven" aria-expanded="false" aria-controls="faq-collapseEleven">
-                                    Posso pausar minha assinatura?
-                                </button>
-                            </h2>
-                            <div id="faq-collapseEleven" class="accordion-collapse collapse" aria-labelledby="faq-headingEleven" data-bs-parent="#faq-accordion">
-                                <div class="accordion-body ff-secondary">
-                                    Sim, é possível pausar a assinatura temporariamente. Basta nos avisar pelo WhatsApp e definiremos o período de pausa.
                                 </div>
                             </div>
                         </div>
@@ -569,6 +537,18 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="faq-headingFive">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-collapseFive" aria-expanded="false" aria-controls="faq-collapseFive">
+                                    Posso mudar o horário de recebimento das mensagens?
+                                </button>
+                            </h2>
+                            <div id="faq-collapseFive" class="accordion-collapse collapse" aria-labelledby="faq-headingFive" data-bs-parent="#faq-accordion">
+                                <div class="accordion-body ff-secondary">
+                                    No momento, o horário de envio é fixo, mas estamos trabalhando para oferecer essa opção no futuro.
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <!-- end accordion -->
                 </div>
@@ -580,12 +560,27 @@
     </section>
     <!-- end faqs -->
 
+    <section class="py-5 bg-light text-center">
+        <div class="container py-5">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <h2 class="display-4 fw-bold">Comece hoje mesmo!</h2>
+                    <p class="lead text-muted mt-3">
+                        Comece a receber palavras de fé e inspiração hoje mesmo e faça da espiritualidade uma parte essencial da sua rotina diária.
+                    </p>
+                    <div class="mt-4">
+                        <a href="#" class="btn btn-success btn-lg btn--shake px-5 py-3 shadow-lg">Assinar Agora</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
 
     <!-- Start footer -->
     <footer class="custom-footer bg-dark py-4 position-relative">
         <div class="container">
-            <div class="d-flex justify-content-between align-items-center">
+            <div class="d-flex flex-column flex-md-row justify-content-between align-items-center">
                 <div>
                     <p class="copy-rights mb-0">
                         <script>
@@ -598,7 +593,7 @@
                 </div>
                 <ul class="list-unstyled ff-secondary footer-list fs-14">
                     <li>
-                        <a href="#" data-bs-toggle="modal" data-bs-target="#privacyPolicyModal">Política de privacidade</a>
+                        <a href="<?= home_url('/politica-de-privacidade') ?>">Política de privacidade</a>
                     </li>
                 </ul>
             </div>

@@ -70,7 +70,6 @@
             }
 
             this.acceptContent.addEventListener('scroll', this.checkScrollPosition.bind(this));
-            this.acceptButton.disabled = true;
         }
 
         checkScrollPosition() {
@@ -78,7 +77,7 @@
             const scrollPosition = this.acceptContent.scrollTop + this.acceptContent.clientHeight + 1;
 
             if (scrollPosition >= contentHeight) {
-                this.acceptButton.disabled = false;
+                // this.acceptButton.disabled = false;
             }
         }
 
