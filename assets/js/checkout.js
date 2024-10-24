@@ -56,10 +56,10 @@
         bindEvents() {
             this.addDependentButton.addEventListener('click', this.addDependent.bind(this));
             this.removeDependentButton.addEventListener('click', this.removeDependent.bind(this));
-            this.noEmailCheckbox.addEventListener('change', this.toggleEmail.bind(this));
+            // this.noEmailCheckbox.addEventListener('change', this.toggleEmail.bind(this));
             this.phoneInput.addEventListener('input', this.applyPhoneMask.bind(this));
-            this.postalCodeInput.addEventListener('input', this.fetchAddress.bind(this));
-            this.postalCodeInput.addEventListener('blur', this.fetchAddress.bind(this));
+            // this.postalCodeInput.addEventListener('input', this.fetchAddress.bind(this));
+            // this.postalCodeInput.addEventListener('blur', this.fetchAddress.bind(this));
             this.form.addEventListener('submit', this.handleSubmit.bind(this));
 
             this.nameInput.addEventListener('focusout', this.updateModalText.bind(this));
@@ -254,14 +254,14 @@
             const requiredFields = [
                 this.nameInput,
                 this.cpfCnpjInput,
-                this.emailInput,
                 this.phoneInput,
-                this.postalCodeInput,
-                this.addressInput,
-                this.addressNumberInput,
-                this.provinceInput,
-                this.cityInput,
-                this.ufInput,
+                // this.emailInput,
+                // this.postalCodeInput,
+                // this.addressInput,
+                // this.addressNumberInput,
+                // this.provinceInput,
+                // this.cityInput,
+                // this.ufInput,
             ];
 
             // Campos obrigatórios apenas se o método de pagamento for cartão
@@ -287,17 +287,18 @@
             if (!formIsValid) {
                 this.showMessage('Por favor, preencha todos os campos obrigatórios.', 'danger');
                 this.closeModal();
+                this.submitButton.disabled = false
                 return;
             }
 
             // Desbloqueia campos antes do envio
-            if (this.noEmailCheckbox.checked) {
-                this.emailInput.disabled = false;
-            }
-            this.addressInput.disabled = false;
-            this.provinceInput.disabled = false;
-            this.cityInput.disabled = false;
-            this.ufInput.disabled = false;
+            // if (this.noEmailCheckbox.checked) {
+            //     this.emailInput.disabled = false;
+            // }
+            // this.addressInput.disabled = false;
+            // this.provinceInput.disabled = false;
+            // this.cityInput.disabled = false;
+            // this.ufInput.disabled = false;
 
             // Converte o telefone para o formato sem máscara
             this.phoneInput.value = this.phoneInput.value.replace(/\D/g, '');

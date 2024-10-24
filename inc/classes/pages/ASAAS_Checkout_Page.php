@@ -149,6 +149,7 @@ class ASAAS_Checkout_Page extends Base_Page
 
         //se PF numero do form
         //se PJ número acordado
+        
 
         if ($entity == 'PF') {
             $subscription_service->set_dependents_amount((int)$_POST['num_dependents']);
@@ -385,10 +386,10 @@ class ASAAS_Checkout_Page extends Base_Page
         ];
 
         // Valida os dados
-        if (!filter_var($formData['email'], FILTER_VALIDATE_EMAIL)) {
-            wp_send_json_error('Invalid email address');
-            wp_die();
-        }
+        // if (!filter_var($formData['email'], FILTER_VALIDATE_EMAIL)) {
+        //     wp_send_json_error('Invalid email address');
+        //     wp_die();
+        // }
 
         if (!preg_match('/^\d{11}$/', $formData['cpfCnpj']) && !preg_match('/^\d{14}$/', $formData['cpfCnpj'])) {
             wp_send_json_error('Invalid CPF/CNPJ');
@@ -505,17 +506,18 @@ class ASAAS_Checkout_Page extends Base_Page
             ];
             $data['creditCardHolderInfo'] = [
                 'name'          => $formData['name'],
-                'email'         => $formData['email'],
+                'email'         => $formData['email'] ?? '',
                 'cpfCnpj'       => $formData['cpfCnpj'],
-                'postalCode'    => $formData['postalCode'],
-                'addressNumber' => $formData['addressNumber'],
+                'postalCode'    => $formData['postalCode'] ?? '',
+                'addressNumber' => $formData['addressNumber'] ?? '',
                 'phone'         => $formData['phone'],
             ];
         }
-        
+
         $wizer_wallet_id = 'fba72e7d-7113-4384-a7a8-96eb96f8fa05';
 
-        // Se houver vendor_id, adicione os dados de divisão (split)
+        
+        // if ($lead && $lead->get_vendor_id()) {
         if ($lead && $lead->get_vendor_id()) {
             $vendor_wallet_id = get_user_meta($lead->get_vendor_id(), 'wallet_id', true);
 
@@ -526,10 +528,6 @@ class ASAAS_Checkout_Page extends Base_Page
                         [
                             'walletId'   => $vendor_wallet_id,
                             'percentualValue' => $comissao
-                        ],
-                        [
-                            'walletId'   => $wizer_wallet_id,
-                            'percentualValue' => 3.0
                         ]
                     ];
                 } else {
@@ -541,24 +539,8 @@ class ASAAS_Checkout_Page extends Base_Page
                         ]
                     ];
                 }
-            } else {
-                // Se não há vendor_wallet_id
-                $data['split'] = [
-                    [
-                        'walletId'   => $wizer_wallet_id,
-                        'percentualValue' => 3.0
-                    ]
-                ];
-            }
-        } else {
-            // Se não há vendor_wallet_id
-            $data['split'] = [
-                [
-                    'walletId'   => $wizer_wallet_id,
-                    'percentualValue' => 3.0
-                ]
-            ];
-        }
+            } 
+        } 
 
 
         // Cria a assinatura no Asaas
