@@ -2,7 +2,7 @@
 
 class Checkout_Endpoint_REST
 {
-    private static $secret_token = 'seu_token_secreto_aqui';
+    private static $secret_token = '6tgY4zO2BGEzlKG17ku0u07qOqtt5gDDukHzHBKEC4OmoZMB6CdIVLUmsRrsu267';
 
     public static function init()
     {

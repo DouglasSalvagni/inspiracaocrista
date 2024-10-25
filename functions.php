@@ -1,5 +1,26 @@
 <?php
 
+
+/**
+ * Define a constant to enable or disable database migrations.
+ *
+ * This constant controls whether the custom database tables
+ * should be automatically created or updated when the theme is activated.
+ * 
+ * Set to true to enable migrations, or false to disable them.
+ * 
+ * Usage:
+ * If ENABLE_MIGRATIONS is set to true, the migrations will run automatically
+ * during theme activation via the 'after_switch_theme' hook, creating or updating
+ * custom tables as needed.
+ *
+ * Example:
+ * define('ENABLE_MIGRATIONS', true);  // Enables automatic migrations
+ *
+ * @var bool ENABLE_MIGRATIONS Set to true to enable automatic database migrations, false to disable.
+ */
+define('ENABLE_MIGRATIONS', true);
+
 function set_wp_timezone()
 {
     $timezone = get_option('timezone_string');
@@ -17,15 +38,19 @@ add_action('init', 'set_wp_timezone');
 // require get_template_directory() . '/inc/dev-testes.php';
 
 //MIGRATIONS
-require get_template_directory() . '/inc/migration/create_sales_table.php';
-require get_template_directory() . '/inc/migration/create_notifications_table.php';
-require get_template_directory() . '/inc/migration/create_notifications_archived_table.php';
-require get_template_directory() . '/inc/migration/create_assinantes_table.php';
-require get_template_directory() . '/inc/migration/create_assinantes_meta_table.php';
-require get_template_directory() . '/inc/migration/create_assinantes_archived_table.php';
-require get_template_directory() . '/inc/migration/create_checkout_links_table.php';
-require get_template_directory() . '/inc/migration/create_leads_archived_table.php';
-require get_template_directory() . '/inc/migration/create_disqualified_leads_table.php';
+if (defined('ENABLE_MIGRATIONS') && ENABLE_MIGRATIONS) {
+    require get_template_directory() . '/inc/migration/create_sales_table.php';
+    require get_template_directory() . '/inc/migration/create_notifications_table.php';
+    require get_template_directory() . '/inc/migration/create_notifications_archived_table.php';
+    require get_template_directory() . '/inc/migration/create_assinantes_table.php';
+    require get_template_directory() . '/inc/migration/create_assinantes_meta_table.php';
+    require get_template_directory() . '/inc/migration/create_assinantes_archived_table.php';
+    require get_template_directory() . '/inc/migration/create_checkout_links_table.php';
+    require get_template_directory() . '/inc/migration/create_leads_archived_table.php';
+    require get_template_directory() . '/inc/migration/create_disqualified_leads_table.php';
+    require get_template_directory() . '/inc/migration/create_frases_table.php';
+    require get_template_directory() . '/inc/migration/create_assinantes_frases_table.php';
+}
 
 //LOAD CLASSES
 require get_template_directory() . '/inc/classes/_loader.php';

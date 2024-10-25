@@ -1,6 +1,6 @@
 <?php
 
-class Lead_Endpoint_REST
+class Frase_Endpoint_REST
 {
     private static $secret_token = '6tgY4zO2BGEzlKG17ku0u07qOqtt5gDDukHzHBKEC4OmoZMB6CdIVLUmsRrsu267';
 
@@ -11,27 +11,21 @@ class Lead_Endpoint_REST
 
     public static function register_routes()
     {
-        register_rest_route('custom/v1', '/add-lead/', [
+        register_rest_route('custom/v1', '/add-frase/', [
             'methods' => 'POST',
-            'callback' => [__CLASS__, 'add_lead_simplificado'],
+            'callback' => [__CLASS__, 'create_frase'],
             'permission_callback' => [__CLASS__, 'permissions_check'],
             'args' => [
-                'lead_name' => [
+                'texto' => [
                     'required' => true,
                     'validate_callback' => function ($param, $request, $key) {
                         return !empty($param); // Valida se o nome foi enviado
                     }
                 ],
-                'lead_phone' => [
+                'texto' => [
                     'required' => true,
                     'validate_callback' => function ($param, $request, $key) {
-                        return !empty($param); // Valida se o telefone foi enviado
-                    }
-                ],
-                'cpf_cnpj' => [
-                    'required' => true,
-                    'validate_callback' => function ($param, $request, $key) {
-                        return !empty($param); // Valida se o CPF/CNPJ foi enviado
+                        return !empty($param); // Valida se o nome foi enviado
                     }
                 ],
                 'token' => [
@@ -55,20 +49,26 @@ class Lead_Endpoint_REST
         }
     }
 
-    public static function add_lead_simplificado($request)
+    public static function create_frase($request)
     {
-        // Converte os dados do request REST em formato de array
-        $form_data = $request->get_params();
+        global $wpdb;
+        $table_name = $wpdb->prefix . 'frases';
 
-        // Chama o método Lead_Service::adicionar_lead_simplificado()
-        $result = Lead_Service::adicionar_lead_simplificado($form_data, false);
+        $data = [
+            'texto'  => $request->get_param('texto'),
+            'imagem' => $request->get_param('imagem'),
+        ];
 
-        if ($result['success']) {
-            return new WP_REST_Response(['message' => 'Lead criado com sucesso.', 'lead_id' => $result['lead_id']], 200);
-        } else {
-            return new WP_REST_Response(['message' => $result['message']], 400);
+        $inserted = $wpdb->insert($table_name, $data);
+
+        if ($inserted === false) {
+            return new WP_REST_Response(['message' => $wpdb->last_error], 400);
         }
+
+        $frase_id = $wpdb->insert_id;
+
+        return new WP_REST_Response(['message' => 'Frase criada com sucesso.', 'frase_id' => $frase_id], 200);
     }
 }
 
-Lead_Endpoint_REST::init();
+Frase_Endpoint_REST::init();

@@ -52,6 +52,7 @@ require get_template_directory() . '/inc/classes/webhook/leadstaker-webhook.php'
 require get_template_directory() . '/inc/classes/webhook/n8n-webhook.php';
 require get_template_directory() . '/inc/classes/webhook/Checkout-Endpoint-REST.php';
 require get_template_directory() . '/inc/classes/webhook/Lead-Endpoint-REST.php';
+require get_template_directory() . '/inc/classes/webhook/Frase-Endpoint-REST.php';
 
 // COMPONENTS
 require get_template_directory() . '/inc/classes/components/Notification_Renderer.php';
