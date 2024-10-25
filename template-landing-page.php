@@ -8,10 +8,10 @@
  * @since 1.0
  */
 
-$page = new Landing_page();
+$pagina = new Landing_page();
 
 get_header();
 
-$page->render();
+$pagina->render();
 
 get_footer();

@@ -8,10 +8,10 @@
  * @since 1.0
  */
 
-$page = new User_Profile_Edit();
+$pagina = new User_Profile_Edit();
 
 get_header('dashboard');
 
-$page->render();
+$pagina->render();
 
 get_footer('dashboard');
