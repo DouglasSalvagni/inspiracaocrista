@@ -11,6 +11,7 @@ class Frase_Endpoint_REST
 
     public static function register_routes()
     {
+        // Endpoint para adicionar frase
         register_rest_route('custom/v1', '/add-frase/', [
             'methods' => 'POST',
             'callback' => [__CLASS__, 'create_frase'],
@@ -30,6 +31,8 @@ class Frase_Endpoint_REST
                 ],
             ]
         ]);
+
+        // Endpoint para atualizar frase
         register_rest_route('custom/v1', '/update-frase/', [
             'methods' => 'POST',
             'callback' => [__CLASS__, 'update_frase'],
@@ -53,6 +56,48 @@ class Frase_Endpoint_REST
                         return !empty($param); // Validação básica de não estar vazio
                     }
                 ],
+            ]
+        ]);
+
+        // Endpoint para obter a próxima frase
+        register_rest_route('custom/v1', '/get-next-frase/', [
+            'methods' => 'POST',
+            'callback' => [__CLASS__, 'get_next_frase'],
+            'permission_callback' => [__CLASS__, 'permissions_check'],
+            'args' => [
+                'assinante_id' => [
+                    'required' => true,
+                    'validate_callback' => function ($param) {
+                        return is_numeric($param);
+                    }
+                ],
+                'token' => [
+                    'required' => true,
+                ]
+            ]
+        ]);
+
+        // Endpoint para registrar frase lida
+        register_rest_route('custom/v1', '/register-read-frase/', [
+            'methods' => 'POST',
+            'callback' => [__CLASS__, 'register_read_frase'],
+            'permission_callback' => [__CLASS__, 'permissions_check'],
+            'args' => [
+                'assinante_id' => [
+                    'required' => true,
+                    'validate_callback' => function ($param) {
+                        return is_numeric($param);
+                    }
+                ],
+                'frase_id' => [
+                    'required' => true,
+                    'validate_callback' => function ($param) {
+                        return is_numeric($param);
+                    }
+                ],
+                'token' => [
+                    'required' => true,
+                ]
             ]
         ]);
     }
@@ -117,6 +162,57 @@ class Frase_Endpoint_REST
         }
 
         return new WP_REST_Response(['message' => 'Frase atualizada com sucesso.', 'frase_id' => $frase_id], 200);
+    }
+
+    public static function get_next_frase($request)
+    {
+        global $wpdb;
+        $assinante_id = $request->get_param('assinante_id');
+        $frases_table = $wpdb->prefix . 'frases';
+        $assinantes_frases_table = $wpdb->prefix . 'assinantes_frases';
+
+        // Obter frases ainda não lidas pelo assinante
+        $query = "
+            SELECT f.id, f.texto, f.imagem 
+            FROM $frases_table f
+            LEFT JOIN $assinantes_frases_table af ON f.id = af.frase_id AND af.assinante_id = %d
+            WHERE af.frase_id IS NULL
+            ORDER BY f.created_at ASC
+            LIMIT 1
+        ";
+        $frase = $wpdb->get_row($wpdb->prepare($query, $assinante_id));
+
+        if (!$frase) {
+            return new WP_REST_Response(['message' => 'Nenhuma nova frase disponível para este assinante.'], 404);
+        }
+
+        return new WP_REST_Response([
+            'frase_id' => $frase->id,
+            'texto' => $frase->texto,
+            'imagem' => $frase->imagem
+        ], 200);
+    }
+
+    public static function register_read_frase($request)
+    {
+        global $wpdb;
+        $assinantes_frases_table = $wpdb->prefix . 'assinantes_frases';
+
+        $assinante_id = $request->get_param('assinante_id');
+        $frase_id = $request->get_param('frase_id');
+
+        // Registrar a frase como lida pelo assinante
+        $data = [
+            'assinante_id' => $assinante_id,
+            'frase_id' => $frase_id,
+        ];
+        $inserted = $wpdb->insert($assinantes_frases_table, $data);
+
+        if ($inserted === false) {
+            return new WP_REST_Response(['message' => $wpdb->last_error], 400);
+        }
+
+        return new WP_REST_Response(['message' => 'Frase marcada como lida com sucesso.'], 200);
     }
 }
 

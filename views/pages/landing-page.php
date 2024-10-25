@@ -55,7 +55,7 @@
                         <p class="lead text-muted lh-base">Receba diariamente no WhatsApp uma passagem bíblica e uma imagem inspiradora todos os dias por apenas R$5,00 ao mês.</p>
 
                         <div class="d-flex gap-2 justify-content-center mt-4">
-                            <a href="pages-pricing.html" class="btn btn-success">Assine Agora pelo WhatsApp <i class="ri-whatsapp-line align-middle ms-1"></i></a>
+                            <a href="<?= get_whats_api_url(5180140694, 55, 'Olá, quero conhecer mais sobre o inspiração Cristã') ?>" class="btn btn-success">Assine Agora pelo WhatsApp <i class="ri-whatsapp-line align-middle ms-1"></i></a>
                         </div>
                     </div>
 
@@ -366,7 +366,7 @@
 
 
             <div class="mt-4 row justify-content-center">
-                    <a href="#" class="btn btn-success flex-shrink-1 btn-lg btn--shake px-5 py-3 shadow-lg">Assinar Agora</a>
+                    <a href="<?= get_whats_api_url(5180140694, 55, 'Olá, quero conhecer mais sobre o inspiração Cristã') ?>" class="btn btn-success flex-shrink-1 btn-lg btn--shake px-5 py-3 shadow-lg">Assinar Agora</a>
             </div>
             <!-- end row -->
         </div>
@@ -396,7 +396,7 @@
 
                         <div class="row pt-3">
                             <div class="col-12">
-                                <a href="https://wa.me/SEU_NUMERO_DE_WHATSAPP" class="btn btn-success btn--shake">Quero uma Demonstração Gratuita <i class="ri-whatsapp-line align-middle ms-1"></i></a>
+                                <a href="<?= get_whats_api_url(5180140694, 55, 'Olá, quero conhecer mais sobre o inspiração Cristã') ?>" class="btn btn-success btn--shake">Quero uma Demonstração Gratuita <i class="ri-whatsapp-line align-middle ms-1"></i></a>
                             </div>
                         </div>
                     </div>
@@ -569,7 +569,7 @@
                         Comece a receber palavras de fé e inspiração hoje mesmo e faça da espiritualidade uma parte essencial da sua rotina diária.
                     </p>
                     <div class="mt-4">
-                        <a href="#" class="btn btn-success btn-lg btn--shake px-5 py-3 shadow-lg">Assinar Agora</a>
+                        <a href="<?= get_whats_api_url(5180140694, 55, 'Olá, quero conhecer mais sobre o inspiração Cristã') ?>" class="btn btn-success btn-lg btn--shake px-5 py-3 shadow-lg">Assinar Agora</a>
                     </div>
                 </div>
             </div>

@@ -76,6 +76,9 @@ require get_template_directory() . '/inc/schedules/archive_old_notifications.php
 //SMTP
 require get_template_directory() . '/inc/config-smtp.php';
 
+//UTEIS
+require get_template_directory() . '/inc/utils/telefone.php';
+require get_template_directory() . '/inc/utils/media.php';
 
 
 
